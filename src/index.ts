@@ -42,21 +42,19 @@ const testFlow: Flow = {
 
 testFlow.states.map((state) => getYupAstFromStateSchema(state.schema));
 
-(async () => {
-  const stateEngine = new StateEngine();
+const stateEngine = new StateEngine();
   
-  stateEngine.setFlow(testFlow);
-  stateEngine.compile();
-  
-  const case1 = await stateEngine.run({ nome: "John Doe" });
-  console.log(case1);
-  
-  const case2 = await stateEngine.run({});
-  console.log(case2);
-  
-  const case3 = await stateEngine.run({ email: "s@s.com", valor: 30 });
-  console.log(case3);
+stateEngine.setFlow(testFlow);
+stateEngine.compile();
 
-  const case4 = await stateEngine.run({ nome: "John Doe", email: "s@s.com", valor: 30 });
-  console.log(case4);
-})();
+const case1 = stateEngine.run({ nome: "John Doe" });
+console.log(case1);
+
+const case2 = stateEngine.run({});
+console.log(case2);
+
+const case3 = stateEngine.run({ email: "s@s.com", valor: 30 });
+console.log(case3);
+
+const case4 = stateEngine.run({ nome: "John Doe", email: "s@s.com", valor: 30 });
+console.log(case4);
