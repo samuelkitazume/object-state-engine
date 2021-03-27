@@ -44,6 +44,7 @@ export interface Flow {
   id: FlowID;
   states: State[];
   links: Link[];
+  initialState: StateID;
 }
 
 export interface UserInput {
@@ -53,4 +54,17 @@ export interface UserInput {
 export interface StateEngineInterface {
   setFlow: (flow: Flow) => void;
   run: (data: UserInput) => StateID;
+}
+
+export type AstObjectShape = [[string], [[string], { [key: string]: [[string]] }]];
+
+export interface CompiledState extends State {
+  from: StateID[];
+  to: StateID[];
+}
+
+export interface CompiledFlow {
+  id: FlowID;
+  states: CompiledState[];
+  initialState: StateID;
 }
