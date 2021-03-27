@@ -1,4 +1,3 @@
-import * as yup from 'yup';
 import { transformAll } from "@overgear/yup-ast";
 import { AstObjectShape, CompiledFlow, CompiledState, Flow, StateEngineInterface, StateID, StateSchema, UserInput } from "./types";
 import "./mvp";
