@@ -53,10 +53,10 @@ export interface UserInput {
 
 export interface StateEngineInterface {
   setFlow: (flow: Flow) => void;
-  run: (data: UserInput) => StateID;
+  run: (data: UserInput) => StateID[];
 }
 
-export type AstObjectShape = [[string], [[string], { [key: string]: [[string]] }]];
+export type AstObjectShape = [[string], [string, { [key: string]: [[string]] }]];
 
 export interface CompiledState extends State {
   from: StateID[];

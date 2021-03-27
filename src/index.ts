@@ -1,4 +1,4 @@
-import { compileFlow, getYupAstFromStateSchema } from "./StateEngine";
+import { getYupAstFromStateSchema, StateEngine } from "./StateEngine";
 import { FieldTypes, Flow } from "./types";
 
 const testFlow: Flow = {
@@ -42,4 +42,21 @@ const testFlow: Flow = {
 
 testFlow.states.map((state) => getYupAstFromStateSchema(state.schema));
 
-console.log(JSON.stringify(compileFlow(testFlow)));
+(async () => {
+  const stateEngine = new StateEngine();
+  
+  stateEngine.setFlow(testFlow);
+  stateEngine.compile();
+  
+  const case1 = await stateEngine.run({ nome: "John Doe" });
+  console.log(case1);
+  
+  const case2 = await stateEngine.run({});
+  console.log(case2);
+  
+  const case3 = await stateEngine.run({ email: "s@s.com", valor: 30 });
+  console.log(case3);
+
+  const case4 = await stateEngine.run({ nome: "John Doe", email: "s@s.com", valor: 30 });
+  console.log(case4);
+})();
