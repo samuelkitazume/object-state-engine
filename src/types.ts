@@ -3,9 +3,9 @@ export type FlowID = string;
 export type LinkID = string;
 
 export enum FieldTypes {
-  STRING = "STRING",
-  NUMBER = "NUMBER",
-  BOOLEAN = "BOOLEAN",
+  STRING = "string",
+  NUMBER = "number",
+  BOOLEAN = "boolean",
 }
 
 export interface StringField {
